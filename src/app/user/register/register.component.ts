@@ -17,15 +17,17 @@ export class RegisterComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
-      ),
+      Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
     ]),
     confirm_password: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [
       Validators.required,
-      Validators.minLength(11),
-      Validators.maxLength(11),
+      Validators.minLength(15),
+      Validators.maxLength(15),
     ]),
   });
+
+  register() {
+    console.log('register called');
+  }
 }
