@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export default interface IUser {
   email: string;
@@ -21,7 +22,7 @@ interface User {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AngularFireAuth, private db: AngularFirestore) {}
 
   showAlert = false;
   alertMsg = 'Please wait! Your account is being created.';
@@ -89,7 +90,12 @@ export class RegisterComponent {
         email,
         password
       );
-      console.log(userCredentials);
+      await this.db.collection('users').add({
+        name: this.name.value,
+        email: this.email.value,
+        age: this.age.value,
+        phoneNumber: this.phoneNumber.value,
+      });
     } catch (e) {
       console.log(e);
       this.alertMsg = 'An unexpected error occurred. Please try again later';
