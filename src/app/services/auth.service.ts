@@ -24,11 +24,19 @@ export class AuthService {
       userData.email,
       userData.password
     );
-    await this.userCollection.add({
+
+    if (!userCredentials.user) {
+      throw new Error("User can't be found");
+    }
+    await this.userCollection.doc(userCredentials.user.uid).set({
       name: userData.name,
       email: userData.email,
       age: userData.age,
       phoneNumber: userData.phoneNumber,
+    });
+
+    await userCredentials.user.updateProfile({
+      displayName: userData.name,
     });
   }
 }
