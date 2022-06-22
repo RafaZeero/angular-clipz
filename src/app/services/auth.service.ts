@@ -4,9 +4,10 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { delay, map, Observable } from 'rxjs';
+import { delay, map, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import IUser from '../models/user.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,9 @@ export class AuthService {
     this.isAuthenticated$ = auth.user.pipe(map((user) => !!user));
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1350));
     // this.route.data.subscribe(console.log);
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(console.log);
   }
 
   public async createUser(userData: IUser) {
