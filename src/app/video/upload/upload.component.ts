@@ -13,6 +13,8 @@ export class UploadComponent implements OnInit {
   file: File | null = null;
   fileUploaded = false;
 
+  percentage = 0;
+
   //alert
   showAlert = false;
   alertMsg = 'Please wait! Your clip is being uploaded.';
@@ -52,6 +54,10 @@ export class UploadComponent implements OnInit {
     const clipFileName = uuid();
     const clipPath = `clips/${clipFileName}.mp4`;
 
-    this.storage.upload(clipPath, this.file);
+    const task = this.storage.upload(clipPath, this.file);
+    // console.log(task);
+    task.percentageChanges().subscribe((progress) => {
+      this.percentage = (progress as number) / 100;
+    });
   }
 }
