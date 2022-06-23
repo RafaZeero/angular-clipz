@@ -12,13 +12,10 @@ export class UploadComponent implements OnInit {
   fileUploaded = false;
 
   title = new FormControl('', {
-    validators: [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(50),
-    ],
+    validators: [Validators.required, Validators.minLength(3)],
     nonNullable: true,
   });
+
   uploadForm = new FormGroup({
     title: this.title,
   });
@@ -36,5 +33,9 @@ export class UploadComponent implements OnInit {
 
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     this.fileUploaded = true;
+    this.uploadFile();
+  }
+  uploadFile() {
+    console.log('File Uploaded');
   }
 }

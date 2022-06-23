@@ -19,27 +19,38 @@ export class RegisterComponent {
 
   inSubmission = false;
 
-  name = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  name = new FormControl('', {
+    validators: [Validators.required, Validators.minLength(3)],
+    nonNullable: true,
+  });
   email = new FormControl(
     '',
     [Validators.required, Validators.email],
     [this.emailTaken.validate]
   );
-  age = new FormControl(0, [
-    Validators.required,
-    Validators.min(18),
-    Validators.max(120),
-  ]);
-  password = new FormControl('', [
-    Validators.required,
-    Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
-  ]);
-  confirm_password = new FormControl('', [Validators.required]);
-  phoneNumber = new FormControl('', [
-    Validators.required,
-    Validators.minLength(15),
-    Validators.maxLength(15),
-  ]);
+  age = new FormControl(0, {
+    validators: [Validators.required, Validators.min(18), Validators.max(120)],
+    nonNullable: true,
+  });
+  password = new FormControl('', {
+    validators: [
+      Validators.required,
+      Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
+    ],
+    nonNullable: true,
+  });
+  confirm_password = new FormControl('', {
+    validators: [Validators.required],
+    nonNullable: true,
+  });
+  phoneNumber = new FormControl('', {
+    validators: [
+      Validators.required,
+      Validators.minLength(15),
+      Validators.maxLength(15),
+    ],
+    nonNullable: true,
+  });
 
   registerForm = new FormGroup(
     {
