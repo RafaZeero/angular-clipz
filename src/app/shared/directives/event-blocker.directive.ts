@@ -8,9 +8,9 @@ export class EventBlockerDirective {
   @HostListener('dragover', ['$event'])
   public handleEvent(event: Event) {
     event.preventDefault();
-    // event.stopPropagation();
+    event.stopPropagation();
   }
-  // @HostListener('drag', ['$event'])
+  // @HostListener('drop', ['$event'])
   // public handleEventDrag(event: Event) {
   //   event.preventDefault();
   //   // event.stopPropagation();
