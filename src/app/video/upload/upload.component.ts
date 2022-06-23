@@ -13,6 +13,12 @@ export class UploadComponent implements OnInit {
   file: File | null = null;
   fileUploaded = false;
 
+  //alert
+  showAlert = false;
+  alertMsg = 'Please wait! Your clip is being uploaded.';
+  alertColor = 'blue';
+  inSubmission = false;
+
   title = new FormControl('', {
     validators: [Validators.required, Validators.minLength(3)],
     nonNullable: true,
@@ -26,7 +32,7 @@ export class UploadComponent implements OnInit {
   ngOnInit(): void {}
 
   storeFile($event: Event) {
-    this.isDragOver = true;
+    this.isDragOver = false;
     this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null;
     /* the path $event.dataTransfer.files on chrome is an empty object {}, it is a bug on chrome browser*/
     if (!this.file || this.file.type !== 'video/mp4') {
@@ -35,9 +41,14 @@ export class UploadComponent implements OnInit {
 
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     this.fileUploaded = true;
-    this.uploadFile();
   }
+
   uploadFile() {
+    this.showAlert = true;
+    this.alertColor = 'blue';
+    this.alertMsg = 'Please wait! Your clip is being uploaded.';
+    this.inSubmission = true;
+
     const clipFileName = uuid();
     const clipPath = `clips/${clipFileName}.mp4`;
 
