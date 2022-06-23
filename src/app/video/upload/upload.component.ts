@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-upload',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class UploadComponent implements OnInit {
   isDragOver = false;
   file: File | null = null;
+  fileUploaded = false;
   constructor() {}
 
   ngOnInit(): void {}
@@ -19,5 +21,6 @@ export class UploadComponent implements OnInit {
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
+    this.fileUploaded = true;
   }
 }
