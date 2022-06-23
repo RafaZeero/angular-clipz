@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/services/modal.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -10,6 +10,18 @@ export class UploadComponent implements OnInit {
   isDragOver = false;
   file: File | null = null;
   fileUploaded = false;
+
+  title = new FormControl('', {
+    validators: [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(50),
+    ],
+    nonNullable: true,
+  });
+  uploadForm = new FormGroup({
+    title: this.title,
+  });
   constructor() {}
 
   ngOnInit(): void {}
@@ -21,6 +33,8 @@ export class UploadComponent implements OnInit {
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
+
+    this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     this.fileUploaded = true;
   }
 }
