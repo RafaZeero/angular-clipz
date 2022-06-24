@@ -26,7 +26,7 @@ export class UploadComponent implements OnInit {
   alertColor = 'blue';
   inSubmission = false;
 
-  //user
+  //clipz user
   user: firebase.User | null = null;
 
   title = new FormControl('', {
@@ -34,6 +34,7 @@ export class UploadComponent implements OnInit {
     nonNullable: true,
   });
 
+  // form group to upload a clip
   uploadForm = new FormGroup({
     title: this.title,
   });
@@ -47,6 +48,7 @@ export class UploadComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // store a file at firebase
   storeFile($event: Event) {
     this.isDragOver = false;
     this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null;
@@ -55,13 +57,16 @@ export class UploadComponent implements OnInit {
       return;
     }
 
+    // remove file extensions
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     this.fileUploaded = true;
   }
 
   uploadFile() {
+    //to disable the form during upload
     this.uploadForm.disable();
 
+    // show alert message to user - clip upload in progress
     this.showAlert = true;
     this.alertColor = 'blue';
     this.alertMsg = 'Please wait! Your clip is being uploaded.';
@@ -98,14 +103,18 @@ export class UploadComponent implements OnInit {
           this.clipService.createClip(clip);
 
           console.log(clip);
+
+          // show alert message to user - clip upload complete
           this.alertColor = 'green';
           this.alertMsg =
             'Success! Your clip is now ready to share with the world.';
           this.showPercentage = false;
         },
         error: (err) => {
+          //to enable the form if an error occurred
           this.uploadForm.enable();
 
+          // show alert message to user - clip upload error
           this.alertColor = 'red';
           this.alertMsg = 'Upload failed! Please try again later.';
           this.inSubmission = true;
