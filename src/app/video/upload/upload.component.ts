@@ -51,7 +51,13 @@ export class UploadComponent implements OnInit {
   // store a file at firebase
   storeFile($event: Event) {
     this.isDragOver = false;
-    this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null;
+
+    // check file uploaded.
+    // if file was dragged, check if it exists or it's null,
+    // otherwise file was uploaded from input, check if it exists or it's null
+    this.file = ($event as DragEvent).dataTransfer
+      ? ($event as DragEvent).dataTransfer?.files.item(0) ?? null
+      : ($event.target as HTMLInputElement).files?.item(0) ?? null;
     /* the path $event.dataTransfer.files on chrome is an empty object {}, it is a bug on chrome browser*/
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
