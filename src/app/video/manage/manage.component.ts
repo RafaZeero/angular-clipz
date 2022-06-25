@@ -62,4 +62,16 @@ export class ManageComponent implements OnInit {
       }
     });
   }
+
+  deleteClip($event: Event, clip: IClip) {
+    $event.preventDefault();
+
+    this.clipService.deleteClip(clip);
+
+    this.clips.forEach((element, idx) => {
+      if (clip.docID === element.docID) {
+        this.clips.splice(idx, 1);
+      }
+    });
+  }
 }
