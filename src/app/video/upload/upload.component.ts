@@ -128,7 +128,7 @@ export class UploadComponent implements OnDestroy {
           this.showPercentage = false;
 
           setTimeout(() => {
-            this.router.navigate(['clip', clipDocRef.id]);
+            this.router.navigate(['clips', clipDocRef.id]);
           }, 1000);
         },
 
