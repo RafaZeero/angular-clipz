@@ -46,6 +46,8 @@ export class UploadComponent implements OnDestroy {
 
   task?: AngularFireUploadTask;
 
+  screenshots: string[] = [];
+
   constructor(
     private storage: AngularFireStorage,
     private auth: AngularFireAuth,
@@ -76,7 +78,7 @@ export class UploadComponent implements OnDestroy {
       return;
     }
 
-    await this.ffmpegService.getScreenshots(this.file);
+    this.screenshots = await this.ffmpegService.getScreenshots(this.file);
 
     // remove file extensions
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));

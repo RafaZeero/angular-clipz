@@ -30,7 +30,7 @@ export class FfmpegService {
     // store the file before running ffmpeg commands
     this.ffmpeg.FS('writeFile', file.name, data);
 
-    const seconds = [1, 2, 3];
+    const seconds = [1, 2, 3, 4, 5, 6];
     const commands: string[] = [];
 
     // create multiple screenshots
@@ -43,7 +43,7 @@ export class FfmpegService {
         // Output Options
         // configure the timestamp - format: hh:mm:ss
         '-ss',
-        `00:00:0${second}`,
+        `00:00:0${second + 2}`,
         // define how many frames to focus on to take the screenshot
         '-frames:v',
         '1',
