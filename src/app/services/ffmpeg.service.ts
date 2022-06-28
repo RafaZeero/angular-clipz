@@ -7,6 +7,7 @@ import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 export class FfmpegService {
   isReady = false;
   private ffmpeg;
+  isRunning = false;
 
   constructor() {
     // turn log ON to debug ffmpeg during development
@@ -24,13 +25,16 @@ export class FfmpegService {
   }
 
   async getScreenshots(file: File) {
+    // start the process of getting screenshots
+    this.isRunning = true;
     // convert to binary data
     const data = await fetchFile(file);
 
     // store the file before running ffmpeg commands
     this.ffmpeg.FS('writeFile', file.name, data);
 
-    const seconds = [1, 2, 3, 4, 5, 6];
+    // const seconds = [1, 2, 3, 4, 5, 6];
+    const seconds = [1, 2, 3];
     const commands: string[] = [];
 
     // create multiple screenshots
@@ -77,6 +81,8 @@ export class FfmpegService {
 
       screenshots.push(screenshotURL);
     });
+
+    this.isRunning = false;
 
     return screenshots;
   }

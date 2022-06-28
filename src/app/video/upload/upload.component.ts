@@ -65,6 +65,11 @@ export class UploadComponent implements OnDestroy {
 
   // store a file at firebase
   async storeFile($event: Event) {
+    // checking if the property 'isRunning' is true
+    if (this.ffmpegService.isRunning) {
+      return;
+    }
+
     this.isDragOver = false;
 
     // check file uploaded.
