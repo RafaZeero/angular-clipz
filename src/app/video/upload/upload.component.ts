@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 import { ClipService } from 'src/app/services/clip.service';
 import { Router } from '@angular/router';
 import { FfmpegService } from 'src/app/services/ffmpeg.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-upload',
@@ -44,7 +45,9 @@ export class UploadComponent implements OnDestroy {
     title: this.title,
   });
 
-  task?: AngularFireUploadTask;
+  // video task & screenshot task
+  videoTask?: AngularFireUploadTask;
+  screenshotTask?: AngularFireUploadTask;
 
   // screenshots variables
   screenshots: string[] = [];
@@ -62,7 +65,7 @@ export class UploadComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.task?.cancel();
+    this.videoTask?.cancel();
   }
 
   // store a file at firebase
@@ -95,7 +98,7 @@ export class UploadComponent implements OnDestroy {
     this.fileUploaded = true;
   }
 
-  uploadFile() {
+  async uploadFile() {
     //to disable the form during upload
     this.uploadForm.disable();
 
@@ -110,15 +113,41 @@ export class UploadComponent implements OnDestroy {
     const clipFileName = uuid();
     const clipPath = `clips/${clipFileName}.mp4`;
 
+    //grabing the blob from the url
+    const screenshotBlob = await this.ffmpegService.blobFromUrl(
+      this.selectedScreenshot
+    );
+
+    // naming the screenshot path and the screenshot itself to be stored in Firebase
+    const screenshotPath = `screenshots/${clipFileName}.png`;
+
+    // upload to Firebase
+    this.screenshotTask = this.storage.upload(screenshotPath, screenshotBlob);
+
     // using info from clip file
-    this.task = this.storage.upload(clipPath, this.file);
+    this.videoTask = this.storage.upload(clipPath, this.file);
     const clipRef = this.storage.ref(clipPath);
     // console.log(task);
-    this.task.percentageChanges().subscribe((progress) => {
-      this.percentage = (progress as number) / 100;
+
+    // combining percentages with combineLatest pipe
+    combineLatest([
+      this.videoTask.percentageChanges(),
+      this.screenshotTask.percentageChanges(),
+    ]).subscribe((progress) => {
+      const [videoProgress, screenshotProgress] = progress;
+
+      //check if they have are valid/have a number
+      if (!videoProgress || !screenshotProgress) {
+        return;
+      }
+
+      const totalProgress = videoProgress + screenshotProgress;
+
+      // divide it by 200, bc 100 for each task progress
+      this.percentage = (totalProgress as number) / 200;
     });
 
-    this.task
+    this.videoTask
       .snapshotChanges()
       .pipe(
         last(),
