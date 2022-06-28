@@ -46,7 +46,9 @@ export class UploadComponent implements OnDestroy {
 
   task?: AngularFireUploadTask;
 
+  // screenshots variables
   screenshots: string[] = [];
+  selectedScreenshot = '';
 
   constructor(
     private storage: AngularFireStorage,
@@ -84,6 +86,9 @@ export class UploadComponent implements OnDestroy {
     }
 
     this.screenshots = await this.ffmpegService.getScreenshots(this.file);
+
+    // selecting first item in the array to become visually selected to the user
+    this.selectedScreenshot = this.screenshots[0];
 
     // remove file extensions
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
