@@ -33,6 +33,7 @@ export class FfmpegService {
     const seconds = [1, 2, 3];
     const commands: string[] = [];
 
+    // create multiple screenshots
     seconds.forEach((second) => {
       commands.push(
         // Input
@@ -57,5 +58,26 @@ export class FfmpegService {
 
     // processing the file
     await this.ffmpeg.run(...commands);
+
+    // create variable to store the screenshots URLs
+    const screenshots: string[] = [];
+
+    seconds.forEach((second) => {
+      const screenshotFile = this.ffmpeg.FS(
+        'readFile',
+        `output_0${second}.png`
+      );
+      //use BLOB: Binary Large OBject - It cannot be updated after being created
+      const screenshotBlob = new Blob([screenshotFile.buffer], {
+        type: 'image/png',
+      });
+
+      // create URL to be shown in the browser
+      const screenshotURL = URL.createObjectURL(screenshotBlob);
+
+      screenshots.push(screenshotURL);
+    });
+
+    return screenshots;
   }
 }
