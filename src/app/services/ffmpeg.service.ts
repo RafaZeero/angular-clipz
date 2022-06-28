@@ -30,25 +30,32 @@ export class FfmpegService {
     // store the file before running ffmpeg commands
     this.ffmpeg.FS('writeFile', file.name, data);
 
+    const seconds = [1, 2, 3];
+    const commands: string[] = [];
+
+    seconds.forEach((second) => {
+      commands.push(
+        // Input
+        // grab a specific file from FileSystem (FS()), can be access by their name
+        '-i',
+        file.name,
+        // Output Options
+        // configure the timestamp - format: hh:mm:ss
+        '-ss',
+        `00:00:0${second}`,
+        // define how many frames to focus on to take the screenshot
+        '-frames:v',
+        '1',
+        // the size of the image screenshot - it can be resized to a specific value - fn scale(width:height)
+        // using '-1' will preserver the original aspect ratio from the uploaded video
+        '-filter:v',
+        'scale=510:-1',
+        // Output
+        `output_0${second}.png`
+      );
+    });
+
     // processing the file
-    await this.ffmpeg.run(
-      // Input
-      // grab a specific file from FileSystem (FS()), can be access by their name
-      '-i',
-      file.name,
-      // Output Options
-      // configure the timestamp - format: hh:mm:ss
-      '-ss',
-      '00:00:01',
-      // define how many frames to focus on to take the screenshot
-      '-frames:v',
-      '1',
-      // the size of the image screenshot - it can be resized to a specific value - fn scale(width:height)
-      // using '-1' will preserver the original aspect ratio from the uploaded video
-      '-filter:v',
-      'scale=510:-1',
-      // Output
-      'output_01.png'
-    );
+    await this.ffmpeg.run(...commands);
   }
 }
