@@ -8,7 +8,11 @@ import firebase from 'firebase/compat/app';
 export class FbTimestampPipe implements PipeTransform {
   constructor(private datePipe: DatePipe) {}
 
-  transform(value: firebase.firestore.FieldValue) {
+  transform(value: firebase.firestore.FieldValue | undefined) {
+    if (!value) {
+      return '';
+    }
+
     // firebase Timestamp returns a FieldValue and bc we want to use a valid date, we should type is as Timestamp
     const date = (value as firebase.firestore.Timestamp).toDate();
 
