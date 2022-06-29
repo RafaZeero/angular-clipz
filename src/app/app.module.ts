@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +16,12 @@ import { VideoModule } from './video/video.module';
 import { ClipComponent } from './clip/clip.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClipsListComponent } from './clips-list/clips-list.component';
+import { FbTimestampPipe } from './pipes/fb-timestamp.pipe';
+// pt-BR import
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(localePt, 'pt-br');
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +31,7 @@ import { ClipsListComponent } from './clips-list/clips-list.component';
     ClipComponent,
     NotFoundComponent,
     ClipsListComponent,
+    FbTimestampPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { ClipsListComponent } from './clips-list/clips-list.component';
     AppRoutingModule,
     AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
