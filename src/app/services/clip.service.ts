@@ -10,11 +10,17 @@ import { switchMap, map } from 'rxjs/operators';
 import { of, BehaviorSubject, combineLatest, lastValueFrom } from 'rxjs';
 import IClip from '../models/clip.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import {
+  Resolve,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClipService {
+export class ClipService implements Resolve<IClip | null> {
   public clipsCollection: AngularFirestoreCollection<IClip>;
 
   // query snapshot from Firebase db
@@ -24,7 +30,8 @@ export class ClipService {
   constructor(
     private db: AngularFirestore,
     private auth: AngularFireAuth,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private router: Router
   ) {
     this.clipsCollection = db.collection('clips');
   }
@@ -103,5 +110,27 @@ export class ClipService {
 
     // to be able to do requests again
     this.pendingRequest = false;
+  }
+
+  // ActivatedRouteSnapshot: Store current route being visited ~> Access route params
+  // RouterStateSnapshot: Store the representation of our route in a tree (Won't be used)
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.clipsCollection
+      .doc(route.params['id'])
+      .get()
+      .pipe(
+        map((snapshot) => {
+          //get the ID from the video in the URL
+          const data = snapshot.data();
+
+          if (!data) {
+            // redirect user if page doesn't exist
+            this.router.navigate(['/']);
+            return null;
+          }
+
+          return data;
+        })
+      );
   }
 }
