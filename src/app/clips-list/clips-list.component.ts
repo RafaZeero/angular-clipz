@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ClipService } from '../services/clip.service';
 
 @Component({
@@ -9,19 +9,29 @@ import { ClipService } from '../services/clip.service';
   providers: [DatePipe],
 })
 export class ClipsListComponent implements OnInit, OnDestroy {
+  @Input() scrollable = true;
+
   constructor(public clipService: ClipService) {
     this.clipService.getClips();
   }
 
   ngOnInit(): void {
-    // create event listener
-    window.addEventListener('scroll', this.handleScroll);
+    if (this.scrollable) {
+      // create event listener
+      window.addEventListener('scroll', this.handleScroll);
+    }
   }
   ngOnDestroy(): void {
-    // destroy event listener to prevent memory leak
-    window.removeEventListener('scroll', this.handleScroll);
+    if (this.scrollable) {
+      // destroy event listener to prevent memory leak
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    // to empty clips rendered on screen so every time the user loads the page, it will render new clips
+    this.clipService.pageClips = [];
   }
 
+  // fn to create infinite scrollable clips
   handleScroll = () => {
     // get the sizes of the document element
     const { scrollTop, offsetHeight } = document.documentElement;
