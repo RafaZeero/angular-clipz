@@ -81,4 +81,19 @@ export class ManageComponent implements OnInit {
       }
     });
   }
+
+  async copyToClipboard($event: MouseEvent, docID: string | undefined) {
+    // prevent default behavior from the browser
+    $event.preventDefault();
+    // docID may be empty, so it won't continue to copy to clipboard
+    if (!docID) return;
+
+    // location.origin: current location from the browser (read-only)
+    const url = `${location.origin}/clips/${docID}`;
+
+    // copy the link to the user's clipboard
+    await navigator.clipboard.writeText(url);
+
+    alert('Link copied!');
+  }
 }
