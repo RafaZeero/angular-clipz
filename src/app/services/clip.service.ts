@@ -7,7 +7,7 @@ import {
   QuerySnapshot,
 } from '@angular/fire/compat/firestore';
 import { switchMap, map } from 'rxjs/operators';
-import { of, BehaviorSubject, combineLatest } from 'rxjs';
+import { of, BehaviorSubject, combineLatest, lastValueFrom } from 'rxjs';
 import IClip from '../models/clip.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
@@ -16,6 +16,10 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 })
 export class ClipService {
   public clipsCollection: AngularFirestoreCollection<IClip>;
+
+  // query snapshot from Firebase db
+  pageClips: IClip[] = [];
+  pendingRequest = false;
 
   constructor(
     private db: AngularFirestore,
@@ -65,5 +69,39 @@ export class ClipService {
 
     // delete collection from storage
     await this.clipsCollection.doc(clip.docID).delete();
+  }
+
+  async getClips() {
+    // don't query if pending is true
+    if (this.pendingRequest) return;
+
+    // to make requests
+    this.pendingRequest = false;
+
+    // make queries to the Firebase
+    let query = this.clipsCollection.ref.orderBy('timestamp', 'desc').limit(6);
+
+    const { length } = this.pageClips;
+
+    if (length) {
+      const lastDocId = this.pageClips[length - 1].docID;
+      const lastDoc = await lastValueFrom(
+        this.clipsCollection.doc(lastDocId).get()
+      );
+      // make queries after the last doc, so it doesn't request the same exact docs again
+      query = query.startAfter(lastDoc);
+    }
+
+    // receive the requested clips and push them into the pageClips array
+    const snapshot = await query.get();
+    snapshot.forEach((doc) => {
+      this.pageClips.push({
+        docID: doc.id,
+        ...doc.data(),
+      });
+    });
+
+    // to be able to do requests again
+    this.pendingRequest = false;
   }
 }
