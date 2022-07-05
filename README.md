@@ -35,150 +35,150 @@ Clipz é um app para compartilhar jogadas incríveis, seus melhores momentos ser
 
 <details>
 <summary style="font-size:14px">Ver estrutura</summary>
-  
+
 
 ```markdown
 📦src
- ┣ 📂app
- ┃ ┣ 📂about
- ┃ ┃ ┣ 📜about.component.html
- ┃ ┃ ┣ 📜about.component.scss
- ┃ ┃ ┣ 📜about.component.spec.ts
- ┃ ┃ ┗ 📜about.component.ts
- ┃ ┣ 📂clip
- ┃ ┃ ┣ 📜clip.component.html
- ┃ ┃ ┣ 📜clip.component.scss
- ┃ ┃ ┣ 📜clip.component.spec.ts
- ┃ ┃ ┗ 📜clip.component.ts
- ┃ ┣ 📂clips-list
- ┃ ┃ ┣ 📜clips-list.component.html
- ┃ ┃ ┣ 📜clips-list.component.scss
- ┃ ┃ ┣ 📜clips-list.component.spec.ts
- ┃ ┃ ┗ 📜clips-list.component.ts
- ┃ ┣ 📂home
- ┃ ┃ ┣ 📜home.component.html
- ┃ ┃ ┣ 📜home.component.scss
- ┃ ┃ ┣ 📜home.component.spec.ts
- ┃ ┃ ┗ 📜home.component.ts
- ┃ ┣ 📂models
- ┃ ┃ ┣ 📜clip.model.ts
- ┃ ┃ ┗ 📜user.model.ts
- ┃ ┣ 📂nav
- ┃ ┃ ┣ 📜nav.component.html
- ┃ ┃ ┣ 📜nav.component.scss
- ┃ ┃ ┣ 📜nav.component.spec.ts
- ┃ ┃ ┗ 📜nav.component.ts
- ┃ ┣ 📂not-found
- ┃ ┃ ┣ 📜not-found.component.html
- ┃ ┃ ┣ 📜not-found.component.scss
- ┃ ┃ ┣ 📜not-found.component.spec.ts
- ┃ ┃ ┗ 📜not-found.component.ts
- ┃ ┣ 📂pipes
- ┃ ┃ ┣ 📜fb-timestamp.pipe.spec.ts
- ┃ ┃ ┗ 📜fb-timestamp.pipe.ts
- ┃ ┣ 📂services
- ┃ ┃ ┣ 📜auth.service.spec.ts
- ┃ ┃ ┣ 📜auth.service.ts
- ┃ ┃ ┣ 📜clip.service.spec.ts
- ┃ ┃ ┣ 📜clip.service.ts
- ┃ ┃ ┣ 📜ffmpeg.service.spec.ts
- ┃ ┃ ┣ 📜ffmpeg.service.ts
- ┃ ┃ ┣ 📜modal.service.spec.ts
- ┃ ┃ ┗ 📜modal.service.ts
- ┃ ┣ 📂shared
- ┃ ┃ ┣ 📂alert
- ┃ ┃ ┃ ┣ 📜alert.component.html
- ┃ ┃ ┃ ┣ 📜alert.component.scss
- ┃ ┃ ┃ ┣ 📜alert.component.spec.ts
- ┃ ┃ ┃ ┗ 📜alert.component.ts
- ┃ ┃ ┣ 📂directives
- ┃ ┃ ┃ ┣ 📜event-blocker.directive.spec.ts
- ┃ ┃ ┃ ┗ 📜event-blocker.directive.ts
- ┃ ┃ ┣ 📂input
- ┃ ┃ ┃ ┣ 📜input.component.html
- ┃ ┃ ┃ ┣ 📜input.component.scss
- ┃ ┃ ┃ ┣ 📜input.component.spec.ts
- ┃ ┃ ┃ ┗ 📜input.component.ts
- ┃ ┃ ┣ 📂modal
- ┃ ┃ ┃ ┣ 📜modal.component.html
- ┃ ┃ ┃ ┣ 📜modal.component.scss
- ┃ ┃ ┃ ┣ 📜modal.component.spec.ts
- ┃ ┃ ┃ ┗ 📜modal.component.ts
- ┃ ┃ ┣ 📂tab
- ┃ ┃ ┃ ┣ 📜tab.component.html
- ┃ ┃ ┃ ┣ 📜tab.component.scss
- ┃ ┃ ┃ ┣ 📜tab.component.spec.ts
- ┃ ┃ ┃ ┗ 📜tab.component.ts
- ┃ ┃ ┣ 📂tabs-container
- ┃ ┃ ┃ ┣ 📜tabs-container.component.html
- ┃ ┃ ┃ ┣ 📜tabs-container.component.scss
- ┃ ┃ ┃ ┣ 📜tabs-container.component.spec.ts
- ┃ ┃ ┃ ┗ 📜tabs-container.component.ts
- ┃ ┃ ┗ 📜shared.module.ts
- ┃ ┣ 📂user
- ┃ ┃ ┣ 📂auth-modal
- ┃ ┃ ┃ ┣ 📜auth-modal.component.html
- ┃ ┃ ┃ ┣ 📜auth-modal.component.scss
- ┃ ┃ ┃ ┣ 📜auth-modal.component.spec.ts
- ┃ ┃ ┃ ┗ 📜auth-modal.component.ts
- ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┣ 📜login.component.html
- ┃ ┃ ┃ ┣ 📜login.component.scss
- ┃ ┃ ┃ ┣ 📜login.component.spec.ts
- ┃ ┃ ┃ ┗ 📜login.component.ts
- ┃ ┃ ┣ 📂register
- ┃ ┃ ┃ ┣ 📜register.component.html
- ┃ ┃ ┃ ┣ 📜register.component.scss
- ┃ ┃ ┃ ┣ 📜register.component.spec.ts
- ┃ ┃ ┃ ┗ 📜register.component.ts
- ┃ ┃ ┣ 📂validators
- ┃ ┃ ┃ ┣ 📜email-taken.spec.ts
- ┃ ┃ ┃ ┣ 📜email-taken.ts
- ┃ ┃ ┃ ┣ 📜register-validators.spec.ts
- ┃ ┃ ┃ ┗ 📜register-validators.ts
- ┃ ┃ ┗ 📜user.module.ts
- ┃ ┣ 📂video
- ┃ ┃ ┣ 📂edit
- ┃ ┃ ┃ ┣ 📜edit.component.html
- ┃ ┃ ┃ ┣ 📜edit.component.scss
- ┃ ┃ ┃ ┣ 📜edit.component.spec.ts
- ┃ ┃ ┃ ┗ 📜edit.component.ts
- ┃ ┃ ┣ 📂manage
- ┃ ┃ ┃ ┣ 📜manage.component.html
- ┃ ┃ ┃ ┣ 📜manage.component.scss
- ┃ ┃ ┃ ┣ 📜manage.component.spec.ts
- ┃ ┃ ┃ ┗ 📜manage.component.ts
- ┃ ┃ ┣ 📂pipes
- ┃ ┃ ┃ ┣ 📜safe-url.pipe.spec.ts
- ┃ ┃ ┃ ┗ 📜safe-url.pipe.ts
- ┃ ┃ ┣ 📂upload
- ┃ ┃ ┃ ┣ 📜upload.component.html
- ┃ ┃ ┃ ┣ 📜upload.component.scss
- ┃ ┃ ┃ ┣ 📜upload.component.spec.ts
- ┃ ┃ ┃ ┗ 📜upload.component.ts
- ┃ ┃ ┣ 📜video-routing.module.ts
- ┃ ┃ ┗ 📜video.module.ts
- ┃ ┣ 📜app-routing.module.ts
- ┃ ┣ 📜app.component.html
- ┃ ┣ 📜app.component.scss
- ┃ ┣ 📜app.component.spec.ts
- ┃ ┣ 📜app.component.ts
- ┃ ┗ 📜app.module.ts
- ┣ 📂assets
- ┃ ┣ 📂img
- ┃ ┃ ┗ 📜author_img.jpg
- ┃ ┣ 📂video
- ┃ ┃ ┗ 📜hero.webm
- ┃ ┗ 📜.gitkeep
- ┣ 📂environments
- ┃ ┣ 📜environment.prod.ts
- ┃ ┗ 📜environment.ts
- ┣ 📜favicon.ico
- ┣ 📜index.html
- ┣ 📜main.ts
- ┣ 📜polyfills.ts
- ┣ 📜styles.scss
- ┗ 📜test.ts
+┣ 📂app
+┃ ┣ 📂about
+┃ ┃ ┣ 📜about.component.html
+┃ ┃ ┣ 📜about.component.scss
+┃ ┃ ┣ 📜about.component.spec.ts
+┃ ┃ ┗ 📜about.component.ts
+┃ ┣ 📂clip
+┃ ┃ ┣ 📜clip.component.html
+┃ ┃ ┣ 📜clip.component.scss
+┃ ┃ ┣ 📜clip.component.spec.ts
+┃ ┃ ┗ 📜clip.component.ts
+┃ ┣ 📂clips-list
+┃ ┃ ┣ 📜clips-list.component.html
+┃ ┃ ┣ 📜clips-list.component.scss
+┃ ┃ ┣ 📜clips-list.component.spec.ts
+┃ ┃ ┗ 📜clips-list.component.ts
+┃ ┣ 📂home
+┃ ┃ ┣ 📜home.component.html
+┃ ┃ ┣ 📜home.component.scss
+┃ ┃ ┣ 📜home.component.spec.ts
+┃ ┃ ┗ 📜home.component.ts
+┃ ┣ 📂models
+┃ ┃ ┣ 📜clip.model.ts
+┃ ┃ ┗ 📜user.model.ts
+┃ ┣ 📂nav
+┃ ┃ ┣ 📜nav.component.html
+┃ ┃ ┣ 📜nav.component.scss
+┃ ┃ ┣ 📜nav.component.spec.ts
+┃ ┃ ┗ 📜nav.component.ts
+┃ ┣ 📂not-found
+┃ ┃ ┣ 📜not-found.component.html
+┃ ┃ ┣ 📜not-found.component.scss
+┃ ┃ ┣ 📜not-found.component.spec.ts
+┃ ┃ ┗ 📜not-found.component.ts
+┃ ┣ 📂pipes
+┃ ┃ ┣ 📜fb-timestamp.pipe.spec.ts
+┃ ┃ ┗ 📜fb-timestamp.pipe.ts
+┃ ┣ 📂services
+┃ ┃ ┣ 📜auth.service.spec.ts
+┃ ┃ ┣ 📜auth.service.ts
+┃ ┃ ┣ 📜clip.service.spec.ts
+┃ ┃ ┣ 📜clip.service.ts
+┃ ┃ ┣ 📜ffmpeg.service.spec.ts
+┃ ┃ ┣ 📜ffmpeg.service.ts
+┃ ┃ ┣ 📜modal.service.spec.ts
+┃ ┃ ┗ 📜modal.service.ts
+┃ ┣ 📂shared
+┃ ┃ ┣ 📂alert
+┃ ┃ ┃ ┣ 📜alert.component.html
+┃ ┃ ┃ ┣ 📜alert.component.scss
+┃ ┃ ┃ ┣ 📜alert.component.spec.ts
+┃ ┃ ┃ ┗ 📜alert.component.ts
+┃ ┃ ┣ 📂directives
+┃ ┃ ┃ ┣ 📜event-blocker.directive.spec.ts
+┃ ┃ ┃ ┗ 📜event-blocker.directive.ts
+┃ ┃ ┣ 📂input
+┃ ┃ ┃ ┣ 📜input.component.html
+┃ ┃ ┃ ┣ 📜input.component.scss
+┃ ┃ ┃ ┣ 📜input.component.spec.ts
+┃ ┃ ┃ ┗ 📜input.component.ts
+┃ ┃ ┣ 📂modal
+┃ ┃ ┃ ┣ 📜modal.component.html
+┃ ┃ ┃ ┣ 📜modal.component.scss
+┃ ┃ ┃ ┣ 📜modal.component.spec.ts
+┃ ┃ ┃ ┗ 📜modal.component.ts
+┃ ┃ ┣ 📂tab
+┃ ┃ ┃ ┣ 📜tab.component.html
+┃ ┃ ┃ ┣ 📜tab.component.scss
+┃ ┃ ┃ ┣ 📜tab.component.spec.ts
+┃ ┃ ┃ ┗ 📜tab.component.ts
+┃ ┃ ┣ 📂tabs-container
+┃ ┃ ┃ ┣ 📜tabs-container.component.html
+┃ ┃ ┃ ┣ 📜tabs-container.component.scss
+┃ ┃ ┃ ┣ 📜tabs-container.component.spec.ts
+┃ ┃ ┃ ┗ 📜tabs-container.component.ts
+┃ ┃ ┗ 📜shared.module.ts
+┃ ┣ 📂user
+┃ ┃ ┣ 📂auth-modal
+┃ ┃ ┃ ┣ 📜auth-modal.component.html
+┃ ┃ ┃ ┣ 📜auth-modal.component.scss
+┃ ┃ ┃ ┣ 📜auth-modal.component.spec.ts
+┃ ┃ ┃ ┗ 📜auth-modal.component.ts
+┃ ┃ ┣ 📂login
+┃ ┃ ┃ ┣ 📜login.component.html
+┃ ┃ ┃ ┣ 📜login.component.scss
+┃ ┃ ┃ ┣ 📜login.component.spec.ts
+┃ ┃ ┃ ┗ 📜login.component.ts
+┃ ┃ ┣ 📂register
+┃ ┃ ┃ ┣ 📜register.component.html
+┃ ┃ ┃ ┣ 📜register.component.scss
+┃ ┃ ┃ ┣ 📜register.component.spec.ts
+┃ ┃ ┃ ┗ 📜register.component.ts
+┃ ┃ ┣ 📂validators
+┃ ┃ ┃ ┣ 📜email-taken.spec.ts
+┃ ┃ ┃ ┣ 📜email-taken.ts
+┃ ┃ ┃ ┣ 📜register-validators.spec.ts
+┃ ┃ ┃ ┗ 📜register-validators.ts
+┃ ┃ ┗ 📜user.module.ts
+┃ ┣ 📂video
+┃ ┃ ┣ 📂edit
+┃ ┃ ┃ ┣ 📜edit.component.html
+┃ ┃ ┃ ┣ 📜edit.component.scss
+┃ ┃ ┃ ┣ 📜edit.component.spec.ts
+┃ ┃ ┃ ┗ 📜edit.component.ts
+┃ ┃ ┣ 📂manage
+┃ ┃ ┃ ┣ 📜manage.component.html
+┃ ┃ ┃ ┣ 📜manage.component.scss
+┃ ┃ ┃ ┣ 📜manage.component.spec.ts
+┃ ┃ ┃ ┗ 📜manage.component.ts
+┃ ┃ ┣ 📂pipes
+┃ ┃ ┃ ┣ 📜safe-url.pipe.spec.ts
+┃ ┃ ┃ ┗ 📜safe-url.pipe.ts
+┃ ┃ ┣ 📂upload
+┃ ┃ ┃ ┣ 📜upload.component.html
+┃ ┃ ┃ ┣ 📜upload.component.scss
+┃ ┃ ┃ ┣ 📜upload.component.spec.ts
+┃ ┃ ┃ ┗ 📜upload.component.ts
+┃ ┃ ┣ 📜video-routing.module.ts
+┃ ┃ ┗ 📜video.module.ts
+┃ ┣ 📜app-routing.module.ts
+┃ ┣ 📜app.component.html
+┃ ┣ 📜app.component.scss
+┃ ┣ 📜app.component.spec.ts
+┃ ┣ 📜app.component.ts
+┃ ┗ 📜app.module.ts
+┣ 📂assets
+┃ ┣ 📂img
+┃ ┃ ┗ 📜author_img.jpg
+┃ ┣ 📂video
+┃ ┃ ┗ 📜hero.webm
+┃ ┗ 📜.gitkeep
+┣ 📂environments
+┃ ┣ 📜environment.prod.ts
+┃ ┗ 📜environment.ts
+┣ 📜favicon.ico
+┣ 📜index.html
+┣ 📜main.ts
+┣ 📜polyfills.ts
+┣ 📜styles.scss
+┗ 📜test.ts
 ```
 
 </details>
@@ -200,7 +200,7 @@ Durante a criação do projeto, tive um aprendizado sensacional de todo o framew
 
 ## 🚧Construção
 
-A construção do projeto durou cerca de 1 mês. 
+A construção do projeto durou cerca de 1 mês.
 
 O projeto começou com a página inicial, depois o modal de registro e login. Então as validações. Logo após foi criado a página de upload de vídeos, as tratativas para pegar uma screenshot do vídeo e também o nome do vídeo a ser postado. Parte do projeto foi feito também pelo Firebase, onde defini as regras de acesso ao banco de dados e registro de usuários. Por último foi feito a parte de editar vídeos próprios e a página sobre.
 
@@ -230,7 +230,7 @@ O projeto começou com a página inicial, depois o modal de registro e login. En
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 😄Autor 
+## 😄Autor
 
 <table>
   <tr>
@@ -246,7 +246,9 @@ O projeto começou com a página inicial, depois o modal de registro e login. En
 </table>
 
 ---
+
 ## Agradecimentos
+
 <table>
   <tr>
     <td align="center">
@@ -259,4 +261,3 @@ O projeto começou com a página inicial, depois o modal de registro e login. En
     </td>
   </tr>
 </table>
-
