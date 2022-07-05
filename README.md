@@ -241,6 +241,21 @@ O projeto começou com a página inicial, depois o modal de registro e login. En
           <b>Rafael Lima</b>
         </sub>
       </a>
+    </td>  
+  </tr>
+</table>
+
+---
+## Agradecimentos
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://zerotomastery.io/">
+        <img src="https://github.com/zero-to-mastery.png" width="100px;" alt="Logo de Zero To Mastery Academy"/><br>
+        <sub>
+          <b>Zero To Mastery Academy</b>
+        </sub>
+      </a>
     </td>
   </tr>
 </table>
