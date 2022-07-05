@@ -1,6 +1,20 @@
-# Clipz
+# [Clipz](https://best-playz-clipz.vercel.app/)
 
 Este projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+
+Confira o projeto aqui [Clipz](https://best-playz-clipz.vercel.app/)
+
+## Índice
+
+- [Descrição do Projeto](#descrição)
+  - [Features](#features)
+- [Estrutura de Pastas](#estrutura-de-pastas)
+- [Aprendizado](#aprendizado)
+- [Desafios](#desafios)
+- [Construção](#construção)
+  - [Screenshots](#screenshots)
+- [Tecnologias](#tecnologias)
+- [Autor](#autor)
 
 ## 📝Descrição
 
@@ -171,7 +185,7 @@ Clipz é um app para compartilhar jogadas incríveis, seus melhores momentos ser
 
 ## 📚Aprendizado
 
-Durante a criação do projeto, tive um aprendizado sensacional de todo o framework Angular como: Routing, Directives, Pipes, Services, Ahead of time Compilation, Design Patterns, Performance e Memory Leaks. Também criei uma base sólida de conhecimento acerca de Rxjs, WebAssembly e Rust (usei o Rust para testar edição de arquivos de imagens com WebAssembly, confira o [projeto](https://github.com/RafaZeero/ztm-rust-image-effects).
+Durante a criação do projeto, tive um aprendizado sensacional de todo o framework Angular como: Routing, Directives, Pipes, Services, Ahead of time Compilation, Design Patterns, Performance e Memory Leaks. Também criei uma base sólida de conhecimento acerca de Rxjs, WebAssembly e Rust (usei o Rust para testar edição de arquivos de imagens com WebAssembly, confira o [projeto em Rust](https://github.com/RafaZeero/ztm-rust-image-effects)).
 
 ## 🚀Desafios
 
@@ -189,6 +203,17 @@ Durante a criação do projeto, tive um aprendizado sensacional de todo o framew
 A construção do projeto durou cerca de 1 mês. 
 
 O projeto começou com a página inicial, depois o modal de registro e login. Então as validações. Logo após foi criado a página de upload de vídeos, as tratativas para pegar uma screenshot do vídeo e também o nome do vídeo a ser postado. Parte do projeto foi feito também pelo Firebase, onde defini as regras de acesso ao banco de dados e registro de usuários. Por último foi feito a parte de editar vídeos próprios e a página sobre.
+
+### Screenshots
+
+![image01](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem01.PNG)
+![imagem02](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem02.PNG)
+![imagem03](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem03.PNG)
+![imagem04](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem04.PNG)
+![Imagem05](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem05.PNG)
+![imagem06](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem06.PNG)
+![imagem07](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem07.PNG)
+![imagem08](https://github.com/RafaZeero/readme_template/blob/18e52a9ef43a9cdd554c8ec0fd40e3fbd38010a4/imgs/clipz_project/imagem08.PNG)
 
 ## ⚡Tecnologias
 
