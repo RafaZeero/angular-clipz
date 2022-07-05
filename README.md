@@ -1,6 +1,8 @@
-# Clipz
+# [Clipz](https://best-playz-clipz.vercel.app/)
 
 Este projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+
+Confira o projeto aqui [Clipz](https://best-playz-clipz.vercel.app/)
 
 ## Índice
 
@@ -183,7 +185,7 @@ Clipz é um app para compartilhar jogadas incríveis, seus melhores momentos ser
 
 ## 📚Aprendizado
 
-Durante a criação do projeto, tive um aprendizado sensacional de todo o framework Angular como: Routing, Directives, Pipes, Services, Ahead of time Compilation, Design Patterns, Performance e Memory Leaks. Também criei uma base sólida de conhecimento acerca de Rxjs, WebAssembly e Rust (usei o Rust para testar edição de arquivos de imagens com WebAssembly, confira o [projeto](https://github.com/RafaZeero/ztm-rust-image-effects).
+Durante a criação do projeto, tive um aprendizado sensacional de todo o framework Angular como: Routing, Directives, Pipes, Services, Ahead of time Compilation, Design Patterns, Performance e Memory Leaks. Também criei uma base sólida de conhecimento acerca de Rxjs, WebAssembly e Rust (usei o Rust para testar edição de arquivos de imagens com WebAssembly, confira o [projeto em Rust](https://github.com/RafaZeero/ztm-rust-image-effects)).
 
 ## 🚀Desafios
 
