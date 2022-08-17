@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { NavComponent } from './nav.component';
 
@@ -15,6 +17,8 @@ describe('NavComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavComponent],
+      imports: [RouterTestingModule],
+      providers: [{ provide: AuthService, useValue: mockedAuthService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavComponent);
@@ -22,7 +26,7 @@ describe('NavComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create nav component', () => {
     expect(component).toBeTruthy();
   });
 });
